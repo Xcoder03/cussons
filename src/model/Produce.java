@@ -1,6 +1,6 @@
 package model;
 
-public class BabyProduce {
+public class Produce {
   int id;
   String productName;
   int quantity;
@@ -8,10 +8,10 @@ public class BabyProduce {
   String ExpirationDate;
   int price;
 
-    public BabyProduce() {
+    public Produce() {
     }
 
-    public BabyProduce(int id, String productName, int quantity, String productionDate, String expirationDate, int price) {
+    public Produce(int id, String productName, int quantity, String productionDate, String expirationDate, int price) {
         this.id = id;
         this.productName = productName;
         this.quantity = quantity;
