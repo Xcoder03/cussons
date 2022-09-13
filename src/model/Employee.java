@@ -6,20 +6,21 @@ public class Employee {
     String DOB;
     String email;
     String address;
+    String department;
+    String employmentDate;
 
     public Employee() {
     }
 
-    public Employee(String firstname, String lastname, String DOB, String email, String address) {
-
+    public Employee(String firstname, String lastname, String DOB, String email, String address, String department, String employmentDate) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.DOB = DOB;
         this.email = email;
         this.address = address;
+        this.department = department;
+        this.employmentDate = employmentDate;
     }
-
-
 
     public String getFirstname() {
         return firstname;
@@ -59,5 +60,21 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getEmploymentDate() {
+        return employmentDate;
+    }
+
+    public void setEmploymentDate(String employmentDate) {
+        this.employmentDate = employmentDate;
     }
 }
