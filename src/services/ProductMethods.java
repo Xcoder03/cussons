@@ -22,7 +22,7 @@ public class ProductMethods implements IProductMethods {
          if (con.connectToDatebase()){
            try{
                pr = con.getConnections().prepareStatement(INSERT);
-               pr.setInt(1,produce.getId());
+               pr.setString(1,produce.getId());
                pr.setString(2,produce.getProductName());
                pr.setInt(3,produce.getQuantity());
                pr.setString(4, produce.getProductionDate());
@@ -51,7 +51,7 @@ public class ProductMethods implements IProductMethods {
         if (con.connectToDatebase()){
             try{
                 pr = con.getConnections().prepareStatement(INSERT);
-                pr.setInt(1,produce.getId());
+                pr.setString(1,produce.getId());
                 pr.setString(2,produce.getProductName());
                 pr.setInt(3,produce.getQuantity());
                 pr.setString(4, produce.getProductionDate());
@@ -83,7 +83,7 @@ public class ProductMethods implements IProductMethods {
         if (con.connectToDatebase()){
             try{
                 pr = con.getConnections().prepareStatement(INSERT);
-                pr.setInt(1,produce.getId());
+                pr.setString(1,produce.getId());
                 pr.setString(2,produce.getProductName());
                 pr.setInt(3,produce.getQuantity());
                 pr.setString(4, produce.getProductionDate());

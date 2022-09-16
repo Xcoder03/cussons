@@ -49,7 +49,7 @@ public class OtherProducts  implements IOtherMethods {
 
     @Override
     public boolean registerEmployee(Employee emp) {
-        int upd ;
+        int upd;
         String INSERT = "INSERT INTO employees ( firstName, lastName, dob, email, address,department, employmentDate) VALUES (?,?,?,?,?,?,?)";
         if(con.connectToDatebase()){
             try{
@@ -57,9 +57,10 @@ public class OtherProducts  implements IOtherMethods {
               pr.setString(1,emp.getFirstname());
               pr.setString(2,emp.getLastname());
               pr.setString(3,emp.getDOB());
-              pr.setString(4,emp.getAddress());
-              pr.setString(5,emp.getDepartment());
-              pr.setString(6,emp.getEmploymentDate());
+              pr.setString(4, emp.getEmail());
+              pr.setString(5,emp.getAddress());
+              pr.setString(6,emp.getDepartment());
+              pr.setString(7,emp.getEmploymentDate());
 
                 upd = pr.executeUpdate();
                 if (upd== 0){
@@ -79,7 +80,95 @@ public class OtherProducts  implements IOtherMethods {
     }
 
     @Override
-    public boolean order(Orders order) {
-        return false;
+    public boolean hygieneOrders(Orders order) {
+        int upd;
+        String babyOrder = "INSERT INTO hygieneorders(hyID, productName, quantity, customerName, orderDate, deliveryDate, address) VALUES (?,?,?,?,?,?,?)";
+        if(con.connectToDatebase()){
+            try{
+                pr = con.getConnections().prepareStatement(babyOrder);
+                pr.setString(1,order.getOrderID());
+                pr.setString(2,order.getProductname());
+                pr.setInt(3,order.getQuantity());
+                pr.setString(4,order.getCustomerName());
+                pr.setString(5,order.getOrderDate());
+                pr.setString(6,order.getDeliveryDate());
+                pr.setString(7,order.getAddress());
+                upd = pr.executeUpdate();
+                if (upd== 0){
+                    System.out.println(" >>> order cancelled due to wrong input ");
+                    return  false;
+                }
+                else{
+                    System.out.println(" >>> order has been taken");
+                }
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean beautyOrders(Orders order) {
+        int upd;
+        String babyOrder = "INSERT INTO beautyorders(btyID, productName, quantity, customerName, orderDate, deliveryDate, address) VALUES (?,?,?,?,?,?,?)";
+        if(con.connectToDatebase()){
+            try{
+                pr = con.getConnections().prepareStatement(babyOrder);
+                pr.setString(1,order.getOrderID());
+                pr.setString(2,order.getProductname());
+                pr.setInt(3,order.getQuantity());
+                pr.setString(4,order.getCustomerName());
+                pr.setString(5,order.getOrderDate());
+                pr.setString(6,order.getDeliveryDate());
+                pr.setString(7,order.getAddress());
+                upd = pr.executeUpdate();
+                if (upd== 0){
+                    System.out.println(" >>> order cancelled due to wrong input ");
+                    return  false;
+                }
+                else{
+                    System.out.println(" >>> order has been taken");
+                }
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean babyOrders(Orders order) {
+        int upd;
+      String babyOrder = "INSERT INTO babyorders(boID, productName, quantity, customerName, orderDate, deliveryDate, address) VALUES (?,?,?,?,?,?,?)";
+     if(con.connectToDatebase()){
+         try{
+             pr = con.getConnections().prepareStatement(babyOrder);
+             pr.setString(1,order.getOrderID());
+             pr.setString(2,order.getProductname());
+             pr.setInt(3,order.getQuantity());
+             pr.setString(4,order.getCustomerName());
+             pr.setString(5,order.getOrderDate());
+             pr.setString(6,order.getDeliveryDate());
+             pr.setString(7,order.getAddress());
+             upd = pr.executeUpdate();
+             if (upd== 0){
+                 System.out.println(" >>> order cancelled due to wrong input ");
+                 return  false;
+             }
+             else{
+                 System.out.println(" >>> order has been taken");
+             }
+
+         }catch (SQLException e){
+                e.printStackTrace();
+         }
+     }
+
+        return true;
     }
 }

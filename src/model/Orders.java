@@ -1,7 +1,7 @@
 package model;
 
 public class Orders {
-    int orderID;
+    String  orderID;
     int quantity;
     String productname;
     String customerName;
@@ -12,7 +12,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int orderID, int quantity, String productname, String customerName, String orderDate, String deliveryDate, String address) {
+    public Orders(String orderID, int quantity, String productname, String customerName, String orderDate, String deliveryDate, String address) {
         this.orderID = orderID;
         this.quantity = quantity;
         this.productname = productname;
@@ -22,11 +22,11 @@ public class Orders {
         this.address = address;
     }
 
-    public int getOrderID() {
+    public String getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(String orderID) {
         this.orderID = orderID;
     }
 

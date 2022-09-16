@@ -1,7 +1,7 @@
 package model;
 
 public class Produce {
-  int id;
+  String id;
   String productName;
   int quantity;
   String productionDate;
@@ -11,7 +11,7 @@ public class Produce {
     public Produce() {
     }
 
-    public Produce(int id, String productName, int quantity, String productionDate, String expirationDate, int price) {
+    public Produce(String id, String productName, int quantity, String productionDate, String expirationDate, int price) {
         this.id = id;
         this.productName = productName;
         this.quantity = quantity;
@@ -20,11 +20,11 @@ public class Produce {
         this.price = price;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
