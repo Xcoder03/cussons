@@ -47,42 +47,11 @@ public class OtherProducts  implements IOtherMethods {
         return true;
     }
 
-    @Override
-    public boolean registerEmployee(Employee emp) {
-        int upd;
-        String INSERT = "INSERT INTO employees ( firstName, lastName, dob, email, address,department, employmentDate) VALUES (?,?,?,?,?,?,?)";
-        if(con.connectToDatebase()){
-            try{
-              pr = con.getConnections().prepareStatement(INSERT);
-              pr.setString(1,emp.getFirstname());
-              pr.setString(2,emp.getLastname());
-              pr.setString(3,emp.getDOB());
-              pr.setString(4, emp.getEmail());
-              pr.setString(5,emp.getAddress());
-              pr.setString(6,emp.getDepartment());
-              pr.setString(7,emp.getEmploymentDate());
-
-                upd = pr.executeUpdate();
-                if (upd== 0){
-                    System.out.println(" >>> employee not inserted ");
-                    return  false;
-                }
-                else{
-                    System.out.println(" >>> employee inserted successfully");
-                }
-
-
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        }
-        return true;
-    }
 
     @Override
     public boolean hygieneOrders(Orders order) {
         int upd;
-        String babyOrder = "INSERT INTO hygieneorders(hyID, productName, quantity, customerName, orderDate, deliveryDate, address) VALUES (?,?,?,?,?,?,?)";
+        String babyOrder = "INSERT INTO hygieneorders(hyID, productName, quantity, customerName, orderDate, deliveryDate, address, price) VALUES (?,?,?,?,?,?,?,?)";
         if(con.connectToDatebase()){
             try{
                 pr = con.getConnections().prepareStatement(babyOrder);
