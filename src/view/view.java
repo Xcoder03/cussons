@@ -35,6 +35,20 @@ public class view {
    }
 
 
+
+    public void products(){
+        do{
+            System.out.println("==================================================");
+            System.out.println("                    >> Products <<                 ");
+            System.out.println("==================================================");
+            System.out.println();
+
+            System.out.println("  >>  What would you like to do.  <<   \n >> (1) Upload a product\n >> (2) View products" +
+                    "\n >> (3) discontinue a product  by name\n >> (4) Back to main menu");
+        }
+    }
+
+
     public void menuHolder(){
         int choice;
         do{

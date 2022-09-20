@@ -70,6 +70,7 @@ public class EmployeeMethods implements IEmployeeMethods {
                     return status;
                 } else {
                     status= "  >>  Student deleted successfully";
+
                 }
             } catch (SQLException e){
                 e.printStackTrace();
@@ -115,7 +116,27 @@ public class EmployeeMethods implements IEmployeeMethods {
     }
 
     @Override
-    public boolean viewEmployee() {
-        return false;
+    public String viewEmployee(String email) {
+          Employee emp = new Employee();
+        if(con.connectToDatebase()){
+            String DISPLAY_ALL = "SELECT * FROM student WHERE email = ?";
+            try{
+                pr = con.getConnections().prepareStatement(DISPLAY_ALL);
+                pr.setString(1,email);
+                res = pr.executeQuery();
+                if(res.next()){
+                    emp.setEmail(res.getString("email"));
+                    emp.setFirstname(res.getString("firstname"));
+                    emp.setLastname(res.getString("lastname"));
+                    emp.setDOB(res.getString("dob"));
+                    emp.setAddress(res.getString("address"));
+                    emp.setEmploymentDate(res.getString("employmentDate"));
+                }
+            } catch (SQLException e ){
+                e.printStackTrace();
+            }
+        }
+
+        return emp.toString();
     }
 }

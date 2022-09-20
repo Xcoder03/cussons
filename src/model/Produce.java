@@ -11,6 +11,18 @@ public class Produce {
     public Produce() {
     }
 
+    @Override
+    public String toString() {
+        return "Produce{" +
+                "id='" + id + '\'' +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", productionDate='" + productionDate + '\'' +
+                ", ExpirationDate='" + ExpirationDate + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
     public Produce(String id, String productName, int quantity, String productionDate, String expirationDate, int price) {
         this.id = id;
         this.productName = productName;

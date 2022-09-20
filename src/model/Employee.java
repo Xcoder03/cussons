@@ -12,6 +12,19 @@ public class Employee {
     public Employee() {
     }
 
+    @Override
+    public String toString() {
+        return "Employee {" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", DOB='" + DOB + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", department='" + department + '\'' +
+                ", employmentDate='" + employmentDate + '\'' +
+                '}';
+    }
+
     public Employee(String firstname, String lastname, String DOB, String email, String address, String department, String employmentDate) {
         this.firstname = firstname;
         this.lastname = lastname;

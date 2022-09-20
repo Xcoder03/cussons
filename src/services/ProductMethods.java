@@ -4,14 +4,20 @@ import databaseConnection.CussonsConnection;
 import interfaces.IProductMethods;
 import model.Produce;
 
+import java.security.Permission;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ProductMethods implements IProductMethods {
     PreparedStatement pr;
     ResultSet res;
     CussonsConnection con = new CussonsConnection();
+    ArrayList<String> beautyProducts = new ArrayList<>();
+    ArrayList<String> babyProducts = new ArrayList<>();
+    ArrayList<String> hygieneProducts = new ArrayList<>();
+
 
 
 
@@ -103,6 +109,102 @@ public class ProductMethods implements IProductMethods {
             }
         }
         return true;
+
+    }
+
+    @Override
+    public String deleteProduct(String productName, String confirm) {
+        String status = "";
+
+        int upd = 0;
+        if (beautyProducts.contains(productName)){
+            String DELETEPRODUCT = " DELETE FROM beautyproducts WHERE productName = ? ";
+            if (con.connectToDatebase()){
+                try{
+                    con.getConnections().prepareStatement(DELETEPRODUCT);
+                    pr.setString(1, productName);
+                    if(confirm.equalsIgnoreCase("y")){
+                        upd = pr.executeUpdate();
+                    } else {
+                        System.out.println("  >>  Operation aborted");
+                    }
+
+                    if(upd == 0){
+                        status = "  >>  Deletion not successful";
+                        return status;
+                    } else {
+                        status= "  >>  Product deleted successfully";
+                        ;
+                    }
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if (babyProducts.contains(productName)){
+            String DELETEPRODUCT = " DELETE FROM babyproducts WHERE productName = ? ";
+            if (con.connectToDatebase()){
+                try{
+                    con.getConnections().prepareStatement(DELETEPRODUCT);
+                    pr.setString(1, productName);
+                    if(confirm.equalsIgnoreCase("y")){
+                        upd = pr.executeUpdate();
+                    } else {
+                        System.out.println("  >>  Operation aborted");
+                    }
+
+                    if(upd == 0){
+                        status = "  >>  Deletion not successful";
+                        return status;
+                    } else {
+                        status= "  >>  Product deleted successfully";
+                        ;
+                    }
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+
+        else if (hygieneProducts.contains(productName)){
+            String DELETEPRODUCT = " DELETE FROM hygieneproducts WHERE productName = ? ";
+            if (con.connectToDatebase()){
+                try{
+                    con.getConnections().prepareStatement(DELETEPRODUCT);
+                    pr.setString(1, productName);
+                    if(confirm.equalsIgnoreCase("y")){
+                        upd = pr.executeUpdate();
+                    } else {
+                        System.out.println("  >>  Operation aborted");
+                    }
+
+                    if(upd == 0){
+                        status = "  >>  Deletion not successful";
+                        return status;
+                    } else {
+                        status= "  >>  Product deleted successfully";
+                        ;
+                    }
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        else
+        {
+            status = "Product not found";
+        }
+
+        return  status;
+    }
+
+    @Override
+    public boolean viewProduct(String productName) {
+        Produce pd = new Produce();
 
     }
 }
