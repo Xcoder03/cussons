@@ -80,7 +80,7 @@ public class EmployeeMethods implements IEmployeeMethods {
     }
 
     @Override
-    public String updateEmployee(Employee emp) {
+    public String updateEmployee(Employee emp){
         PreparedStatement ps;
 
         String UPDATE =  "UPDATE employees SET firstName =?, lastName = ? WHERE email = ?";

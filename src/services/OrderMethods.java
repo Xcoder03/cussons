@@ -21,6 +21,7 @@ public class OrderMethods implements IOrderMethods {
     public  void quantityChecker(String productName){
 
 
+
       Produce pd = new Produce();
         if(con.connectToDatebase()){
             String quanityCheck = "SELECT price, quantity FROM babyproducts WHERE productName = ?";
@@ -40,6 +41,42 @@ public class OrderMethods implements IOrderMethods {
         retailQuantity = pd.getQuantity();
         retailPrice = pd.getPrice();
 
+
+    }
+
+    public String quanityUpdate(int quantity, String name, Produce pd){
+        PreparedStatement ps;
+         String UPDATE = "UPDATE babyproduct SET quantity =? where productName = name ";
+        String SEARCH = "SELECT * FROM employees WHERE productName = ?";
+        String status = "";
+
+     if(con.connectToDatebase()){
+      try{
+          pr = con.getConnections().prepareStatement(SEARCH);
+          pr.setString(1 ,pd.getProductName());
+          res = pr.executeQuery();
+
+          if(res.next()){
+              ps = con.getConnections().prepareStatement(UPDATE);
+              ps.setString(1, pd.getId());
+              ps.setString(2,pd.getProductName());
+              ps.setString(3, pd.getExpirationDate());
+
+              int upd = ps.executeUpdate();
+              if(upd == 0){
+                  status = "  >>  Update failed";
+                  return status;
+              } else {
+                  status = "  >>  Update completed";
+              }
+          } else{
+              status = "  >>  Record not found";
+          }
+      }catch (SQLException e){
+          e.printStackTrace();
+        }
+     }
+  return  status;
 
     }
 
