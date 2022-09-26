@@ -22,6 +22,19 @@ public class Orders {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderID='" + orderID + '\'' +
+                ", quantity=" + quantity +
+                ", productname='" + productname + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", orderDate='" + orderDate + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public String getOrderID() {
         return orderID;
     }

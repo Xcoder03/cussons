@@ -7,5 +7,7 @@ public interface IProductMethods {
   public  boolean uploadBeautyProduct(Produce produce);
     public  boolean uploadHygieneProduct(Produce produce);
     public String deleteProduct(String produce, String confirm);
-    public boolean viewProduct(String productName);
+    public boolean viewBabyProducts();
+    public boolean viewBeautyProduct();
+    public boolean viewHygieneProduct();
 }

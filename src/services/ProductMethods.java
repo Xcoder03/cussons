@@ -203,8 +203,17 @@ public class ProductMethods implements IProductMethods {
     }
 
     @Override
-    public boolean viewProduct(String productName) {
-        Produce pd = new Produce();
+    public boolean viewBabyProducts() {
+        return false;
+    }
 
+    @Override
+    public boolean viewBeautyProduct() {
+        return false;
+    }
+
+    @Override
+    public boolean viewHygieneProduct() {
+        return false;
     }
 }

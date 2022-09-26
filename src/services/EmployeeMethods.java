@@ -116,13 +116,12 @@ public class EmployeeMethods implements IEmployeeMethods {
     }
 
     @Override
-    public String viewEmployee(String email) {
+    public String viewEmployee() {
           Employee emp = new Employee();
         if(con.connectToDatebase()){
-            String DISPLAY_ALL = "SELECT * FROM student WHERE email = ?";
+            String DISPLAY_ALL = "SELECT * FROM student";
             try{
                 pr = con.getConnections().prepareStatement(DISPLAY_ALL);
-                pr.setString(1,email);
                 res = pr.executeQuery();
                 if(res.next()){
                     emp.setEmail(res.getString("email"));
