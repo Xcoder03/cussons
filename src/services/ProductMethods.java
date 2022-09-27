@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ProductMethods implements IProductMethods {
     PreparedStatement pr;
@@ -17,6 +18,21 @@ public class ProductMethods implements IProductMethods {
     ArrayList<String> beautyProducts = new ArrayList<>();
     ArrayList<String> babyProducts = new ArrayList<>();
     ArrayList<String> hygieneProducts = new ArrayList<>();
+    String beautyID;
+    String babyID;
+    String hygieneID;
+
+
+    public void idGenerator(){
+        Random rand = new Random();
+        int firstNum = rand.nextInt(20);
+        int secondNum = rand.nextInt(50);
+        String sn = String.valueOf(secondNum);
+        beautyID = "Bp"+ firstNum+sn;
+        babyID = "By"+firstNum+sn;
+        hygieneID = "Hy"+firstNum+sn;
+
+    }
 
 
 
@@ -24,11 +40,13 @@ public class ProductMethods implements IProductMethods {
     @Override
     public boolean uploadBeautyProduct(Produce produce) {
         int upd ;
+        ProductMethods pm = new ProductMethods();
+        pm.idGenerator();
         String INSERT = "INSERT INTO beautyproducts (id, productName, quantity, productionDate, expirationDate, price) VALUES (?,?,?,?,?,?)";
          if (con.connectToDatebase()){
            try{
                pr = con.getConnections().prepareStatement(INSERT);
-               pr.setString(1,produce.getId());
+               pr.setString(1,beautyID);
                pr.setString(2,produce.getProductName());
                pr.setInt(3,produce.getQuantity());
                pr.setString(4, produce.getProductionDate());
@@ -53,11 +71,13 @@ public class ProductMethods implements IProductMethods {
     @Override
     public boolean uploadHygieneProduct(Produce produce) {
         int upd ;
+        ProductMethods pm = new ProductMethods();
+        pm.idGenerator();
         String INSERT = "INSERT INTO hygieneproducts (id, productName, quantity, productionDate, expirationDate, price) VALUES (?,?,?,?,?,?)";
         if (con.connectToDatebase()){
             try{
                 pr = con.getConnections().prepareStatement(INSERT);
-                pr.setString(1,produce.getId());
+                pr.setString(1,hygieneID);
                 pr.setString(2,produce.getProductName());
                 pr.setInt(3,produce.getQuantity());
                 pr.setString(4, produce.getProductionDate());
@@ -83,13 +103,14 @@ public class ProductMethods implements IProductMethods {
     @Override
     public boolean uploadBabyProduct(Produce produce) {
 
-
+        ProductMethods pm = new ProductMethods();
+        pm.idGenerator();
         int upd ;
         String INSERT = "INSERT INTO babyproducts (id, productName, quantity, productionDate, expirationDate, price) VALUES (?,?,?,?,?,?)";
         if (con.connectToDatebase()){
             try{
                 pr = con.getConnections().prepareStatement(INSERT);
-                pr.setString(1,produce.getId());
+                pr.setString(1,babyID);
                 pr.setString(2,produce.getProductName());
                 pr.setInt(3,produce.getQuantity());
                 pr.setString(4, produce.getProductionDate());
